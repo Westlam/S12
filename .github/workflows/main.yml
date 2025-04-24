@@ -1,5 +1,13 @@
 name: golang-s12
-on: push
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - 'v*'
+  pull_request:
+    types:
+      - closed
 jobs:
   test:
     runs-on: ubuntu-latest
