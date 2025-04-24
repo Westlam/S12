@@ -15,9 +15,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Init Go module
-        run: go mod init
-
       - name: Run Unit Tests
         run: GOOS=linux GOARCH=amd64 go test
 
