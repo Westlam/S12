@@ -1,13 +1,5 @@
 name: golang-s12
-on:
-  push:
-    branches:
-      - main
-    tags:
-      - 'v*'
-  pull_request:
-    types:
-      - closed
+on: push
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -26,9 +18,7 @@ jobs:
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
     needs: test
-    if: |
-      startsWith(github.ref, 'refs/tags') ||
-      github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged_at != null
+    if: startsWith(github.ref, 'refs/tags')
     steps:
       - name: Checkout
         uses: actions/checkout@v4
